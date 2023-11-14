@@ -32,7 +32,7 @@ namespace CoverYourAss
         private async void OnAddButtonClicked(object sender, EventArgs e)
         {
             // Navigate to the TaskPage when the Add button is clicked.
-            //await Navigation.PushAsync(new TaskPage());
+            await Navigation.PushAsync(new TaskPage());
         }
     }
 }
