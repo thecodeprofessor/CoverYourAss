@@ -7,12 +7,14 @@
         <StackLayout Padding="20">
             <!-- Entry field for the task name -->
             <Entry x:Name="Name" 
-                   Placeholder="Task Name" />
+                   Placeholder="Task Name"
+                   Text="{Binding Name}"/>
 
             <!-- Editor field for the task description -->
             <Editor x:Name="Description" 
                     Placeholder="Task Description" 
-                    AutoSize="TextChanges"/>
+                    AutoSize="TextChanges"
+                    Text="{Binding Description}"/>
 
             <!-- Button to save the new task -->
             <Button Text="Save Task" 
