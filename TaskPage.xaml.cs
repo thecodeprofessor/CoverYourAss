@@ -14,8 +14,10 @@ public partial class TaskPage : ContentPage
 
     private async void SaveTaskClicked(object sender, EventArgs e)
     {
-        var newTask = new Task { Name = Name.Text, Description = Description.Text };
-        //Save the task logic here.
+        if (_task.Id == 0)
+        {
+            DataService.Instance.Tasks.Add(_task);
+        }
 
         await Navigation.PopAsync();
     }
