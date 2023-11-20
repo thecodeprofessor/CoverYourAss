@@ -5,7 +5,7 @@
 
     <StackLayout>
         <!-- CollectionView to display the list of tasks -->
-        <CollectionView x:Name="TasksCollectionView">
+        <CollectionView x:Name="TasksCollectionView" SelectionMode="Single" SelectionChanged="OnSelectionChanged">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Orientation="Horizontal" Padding="10">

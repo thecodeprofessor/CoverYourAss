@@ -21,5 +21,9 @@ namespace CoverYourAss
             // Navigate to the TaskPage when the Add button is clicked.
             await Navigation.PushAsync(new TaskPage());
         }
+        private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            await Navigation.PushAsync(new TaskPage());
+        }
     }
 }
