@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Linq;
 
 namespace CoverYourAss
 {
@@ -13,12 +15,30 @@ namespace CoverYourAss
         // The ObservableCollection of tasks
         public ObservableCollection<Task> Tasks { get; private set; }
 
+        // Private field to keep track of the last id
+        private int _lastId = 0;
+
         // Private constructor to prevent external instantiation
         private DataService()
         {
             Tasks = new ObservableCollection<Task>();
+            Tasks.CollectionChanged += Tasks_CollectionChanged; // Subscribe to CollectionChanged event
+
             // Initialize with sample data
             LoadSampleTasks();
+        }
+
+        private void Tasks_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            // Check if new items were added
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                // Find all items that have an id of 0 and set the id to the next id
+                foreach (Task task in e.NewItems)
+                {
+                    task.Id = ++_lastId;
+                }
+            }
         }
 
         private void LoadSampleTasks()

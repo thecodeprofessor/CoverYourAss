@@ -11,6 +11,7 @@ namespace CoverYourAss
     public class Task : ObservableObject
     {
         // Private fields to hold the values of Name and Description
+        private int _id;
         private string _name;
         private string _description;
 
@@ -18,6 +19,12 @@ namespace CoverYourAss
         // These properties are using the SetProperty method (inherited from ObservableObject)
         // SetProperty will update the field value and raise the PropertyChanged event if the value has changed.
         // This ensures the UI is updated to reflect the new values.
+        public int Id
+        {
+            get => _id;
+            set => SetProperty(ref _id, value);
+        }
+
         public string Name
         {
             get => _name;
