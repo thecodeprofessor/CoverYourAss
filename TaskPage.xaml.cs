@@ -2,7 +2,7 @@ namespace CoverYourAss;
 
 public partial class TaskPage : ContentPage
 {
-    public TaskPage()
+    public TaskPage(Task task = null)
     {
         InitializeComponent();
     }

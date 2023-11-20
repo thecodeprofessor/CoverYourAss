@@ -23,7 +23,17 @@ namespace CoverYourAss
         }
         private async void OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await Navigation.PushAsync(new TaskPage());
+            // Get the first selected item from the list of currently selected items.
+            // 'as Task' is used to safely cast the selected item to the type 'Task'
+            var selectedTask = e.CurrentSelection.FirstOrDefault() as Task;
+            if (selectedTask != null)
+            {
+                // Navigate to TaskPage with the selected task details
+                await Navigation.PushAsync(new TaskPage(selectedTask));
+            }
+
+            // Deselect item
+            ((CollectionView)sender).SelectedItem = null;
         }
     }
 }
