@@ -1,6 +1,6 @@
 # Cover Your Ass
 
-![Cover Your Ass Logo](cya_logo.png)
+![Cover Your Ass Logo](cya_logo.png | width=100)
 
 Introducing **Cover Your Ass**, a C# .NET MAUI mobile app designed to help you keep track of your daily activities, both professional and personal. This app is your steadfast companion, much like a trusty donkey, enabling you to record information, jot down notes, and capture pictures of various activities you undertake throughout the day.
 
