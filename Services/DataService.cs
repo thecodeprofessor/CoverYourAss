@@ -4,7 +4,7 @@ using System.Linq;
 using CoverYourAss.Models;
 using Task = CoverYourAss.Models.Task;
 
-namespace CoverYourAss
+namespace CoverYourAss.Services
 {
     public class DataService
     {

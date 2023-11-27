@@ -2,7 +2,7 @@
 using CoverYourAss.Models;
 using Task = CoverYourAss.Models.Task;
 
-namespace CoverYourAss
+namespace CoverYourAss.Views
 {
     // MainPage class of the application, inheriting from ContentPage.
     public partial class MainPage : ContentPage
@@ -14,7 +14,7 @@ namespace CoverYourAss
             InitializeComponent();
 
             // Access the Tasks from the DataService
-            TasksCollectionView.ItemsSource = DataService.Instance.Tasks;
+            TasksCollectionView.ItemsSource = Services.DataService.Instance.Tasks;
         }
 
         // Event handler for the Add button click.

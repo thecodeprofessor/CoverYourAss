@@ -1,7 +1,7 @@
 using CoverYourAss.Models;
 using Task = CoverYourAss.Models.Task;
 
-namespace CoverYourAss;
+namespace CoverYourAss.Views;
 
 public partial class TaskPage : ContentPage
 {
@@ -19,7 +19,7 @@ public partial class TaskPage : ContentPage
     {
         if (_task.Id == 0)
         {
-            DataService.Instance.Tasks.Add(_task);
+            Services.DataService.Instance.Tasks.Add(_task);
         }
 
         await Navigation.PopAsync();
