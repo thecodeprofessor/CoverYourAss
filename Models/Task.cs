@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 
 // Defining the namespace for the current code
-namespace CoverYourAss
+namespace CoverYourAss.Models
 {
     // The Task class represents each task. This is our blueprint of what a task is.
     // The Task class inherits from the ObservableObject class, which is part of the MVVM Toolkit.
