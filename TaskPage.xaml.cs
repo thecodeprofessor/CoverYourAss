@@ -1,3 +1,6 @@
+using CoverYourAss.Models;
+using Task = CoverYourAss.Models.Task;
+
 namespace CoverYourAss;
 
 public partial class TaskPage : ContentPage

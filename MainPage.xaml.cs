@@ -1,4 +1,6 @@
 ﻿using System.Collections.ObjectModel;
+using CoverYourAss.Models;
+using Task = CoverYourAss.Models.Task;
 
 namespace CoverYourAss
 {
