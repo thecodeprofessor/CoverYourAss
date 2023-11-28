@@ -1,0 +1,32 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CoverYourAss.ViewModels"
+             xmlns:models="clr-namespace:CoverYourAss.Models"
+             x:Class="CoverYourAss.Views.ActivityListView"
+             x:DataType="viewmodels:ActivityListViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ActivityListViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <!-- CollectionView to display the list of activities -->
+        <CollectionView x:Name="ActivitiesCollectionView" 
+                        ItemsSource="{Binding Activities}"
+                        SelectionMode="Single" 
+                        SelectedItem="{Binding SelectedActivity}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Activity">
+                    <StackLayout Orientation="Horizontal" Padding="10">
+                        <Label Text="{Binding Name}" FontSize="Medium"/>
+                        <!-- Add other activity properties here as needed -->
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Add Button at the bottom -->
+        <Button Text="Add Activity" Command="{Binding GoToAddActivityCommand}"/>
+    </StackLayout>
+
+</ContentPage>
