@@ -4,11 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="using:CoverYourAss.Views"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate views:ActivityListView}"
-        Route="MainPage" />
+        Route="ActivityListView" />
+    <ShellContent
+            Title="ActivityDetailsView"
+            ContentTemplate="{DataTemplate views:ActivityDetailsView}"
+            Route="ActivityDetailsView" />
 
 </Shell>
