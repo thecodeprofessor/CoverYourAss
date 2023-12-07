@@ -5,44 +5,62 @@ using CoverYourAss.Services;
 
 namespace CoverYourAss.ViewModels
 {
-    public class ActivityDetailsViewModel : ObservableObject
+    public class ActivityDetailsViewModel : ObservableObject, IQueryAttributable
     {
-        private Activity _activityToEdit;
-        private ActivityDataService _dataService;
+        protected static DataServiceSQLite Database => DataServiceSQLite.Instance;
 
-        public Activity ActivityToEdit
+        private Activity _activity;
+        public Activity Activity
         {
-            get => _activityToEdit;
-            set => SetProperty(ref _activityToEdit, value);
+            get { return _activity; }
+            set
+            {
+                _activity = value;
+                OnPropertyChanged(nameof(Activity));
+            }
         }
 
-        public IRelayCommand SaveActivityCommand { get; }
-        public IRelayCommand DeleteActivityCommand { get; }
-        public IRelayCommand CancelCommand { get; }
+        public IAsyncRelayCommand SaveCommand { get; }
+        public IAsyncRelayCommand DeleteCommand { get; }
+        public IAsyncRelayCommand CancelCommand { get; }
 
         public ActivityDetailsViewModel()
         {
-            _dataService = ActivityDataService.Instance;
-
-            SaveActivityCommand = new RelayCommand(SaveActivity);
-            DeleteActivityCommand = new RelayCommand(DeleteActivity);
-            CancelCommand = new RelayCommand(Cancel);
+            SaveCommand = new AsyncRelayCommand(Save);
+            DeleteCommand = new AsyncRelayCommand(Delete);
+            CancelCommand = new AsyncRelayCommand(Cancel);
         }
 
-        private void SaveActivity()
+        private async Task Save()
         {
-            // Save the activity
+            await Database.SaveAsync<Activity>(_activity);
+            await Shell.Current.GoToAsync($"///{nameof(Views.ActivityListView)}");
         }
 
-        private void DeleteActivity()
+        private async Task Delete()
         {
-            // Delete the activity
-            _dataService.Activities.Remove(ActivityToEdit);
+            await Database.DeleteAsync<Activity>(_activity);
+            await Shell.Current.GoToAsync($"///{nameof(Views.ActivityListView)}");
         }
 
-        private void Cancel()
+        private async Task Cancel()
         {
-            // Cancel the edit and navigate back
+            await Shell.Current.GoToAsync($"///{nameof(Views.ActivityListView)}");
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
+            if (!query.ContainsKey("id"))
+                return;
+
+            var id = Convert.ToInt32(query["id"].ToString());
+            GetActivity(id);
+        }
+
+        private async void GetActivity(int id)
+        {
+            _activity = await Database.GetAsync<Activity>(id);
+            OnPropertyChanged(nameof(Activity));
         }
     }
 }

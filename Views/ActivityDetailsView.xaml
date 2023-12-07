@@ -10,26 +10,17 @@
 
     <ScrollView>
         <StackLayout Padding="20">
-            <!-- Entry field for the activity name -->
             <Entry x:Name="Name" 
                    Placeholder="Activity Name"
-                   Text="{Binding ActivityToEdit.Name}"/>
-
-            <!-- Editor field for the activity description -->
+                   Text="{Binding Activity.Name}"/>
             <Editor x:Name="Description" 
                     Placeholder="Activity Description" 
                     AutoSize="TextChanges"
-                    Text="{Binding ActivityToEdit.Description}"/>
-
-            <!-- Button to save the activity -->
+                    Text="{Binding Activity.Description}"/>
             <Button Text="Save Activity" 
-                    Command="{Binding SaveActivityCommand}"/>
-
-            <!-- Button to delete the activity -->
+                    Command="{Binding SaveCommand}"/>
             <Button Text="Delete Activity" 
-                    Command="{Binding DeleteActivityCommand}"/>
-
-            <!-- Button to cancel the edit -->
+                    Command="{Binding DeleteCommand}"/>
             <Button Text="Cancel" 
                     Command="{Binding CancelCommand}"/>
         </StackLayout>
