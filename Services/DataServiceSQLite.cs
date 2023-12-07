@@ -26,6 +26,8 @@ namespace CoverYourAss.Services
         {
             if (_database == null)
             {
+                File.Delete(DatabaseFile); //This is a temporary line to delete the database every time. Remove this line to retain data.
+
                 _database = new SQLiteAsyncConnection(DatabaseFile, Flags);
 
                 if (!File.Exists(DatabaseFile))
@@ -38,6 +40,8 @@ namespace CoverYourAss.Services
                     await SaveAsync(new Activity { Name = "Activity 4", Description = "Description for Activity 4" });
                     await SaveAsync(new Activity { Name = "Activity 5", Description = "Description for Activity 5" });
                 }
+
+
             }
         }
 

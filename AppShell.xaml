@@ -11,8 +11,8 @@
         ContentTemplate="{DataTemplate views:ActivityListView}"
         Route="ActivityListView" />
     <ShellContent
-            Title="ActivityDetailsView"
-            ContentTemplate="{DataTemplate views:ActivityDetailsView}"
-            Route="ActivityDetailsView" />
+        Title="ActivityDetailsView"
+        ContentTemplate="{DataTemplate views:ActivityDetailsView}"
+        Route="ActivityDetailsView" />
 
 </Shell>
