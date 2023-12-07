@@ -1,10 +1,8 @@
 ﻿using SQLite;
-using SQLiteNetExtensions.Attributes;
-using System.Collections.Generic;
 
 namespace CoverYourAss.Models
 {
-    public class Activity
+    public class Activity : IEntity
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
