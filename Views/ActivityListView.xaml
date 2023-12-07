@@ -2,6 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:CoverYourAss.ViewModels"
              xmlns:models="clr-namespace:CoverYourAss.Models"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="CoverYourAss.Views.ActivityListView"
              x:DataType="viewmodels:ActivityListViewModel">
 
@@ -9,12 +10,19 @@
         <viewmodels:ActivityListViewModel />
     </ContentPage.BindingContext>
 
+    <ContentPage.Behaviors>
+        <mct:EventToCommandBehavior Command="{Binding GetCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <StackLayout>
         <!-- CollectionView to display the list of activities -->
         <CollectionView x:Name="ActivitiesCollectionView" 
                         ItemsSource="{Binding Activities}"
                         SelectionMode="Single" 
-                        SelectedItem="{Binding SelectedActivity}">
+                        SelectionChangedCommand="{Binding EditCommand}"
+                        SelectionChangedCommandParameter="{Binding
+                Source={RelativeSource Self},
+                Path=SelectedItem}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Activity">
                     <StackLayout Orientation="Horizontal" Padding="10">
@@ -26,7 +34,7 @@
         </CollectionView>
 
         <!-- Add Button at the bottom -->
-        <Button Text="Add Activity" Command="{Binding GoToAddActivityCommand}"/>
+        <Button Text="Add Activity" Command="{Binding AddCommand}"/>
     </StackLayout>
 
 </ContentPage>
