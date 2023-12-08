@@ -1,0 +1,31 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:CoverYourAss.ViewModels"
+             xmlns:models="clr-namespace:CoverYourAss.Models"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="CoverYourAss.Views.LoginView"
+             x:DataType="viewmodels:LoginViewModel">
+
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <mct:EventToCommandBehavior Command="{Binding GetCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <StackLayout>
+        <Label Text="Email"/>
+        <Entry x:Name="Email" Placeholder="Email Address" Text="{Binding Email}"/>
+
+        <Label Text="Password"/>
+        <Entry x:Name="Password" Placeholder="Password" Text="{Binding Password}" IsPassword="True"/>
+        
+        <Button Text="Sign-In" Command="{Binding SignInCommand}"/>
+        <Button Text="Create New Account" Command="{Binding SignUpCommand}"/>
+
+        <Label x:Name="Result"  Text="{Binding Message}"/>
+
+    </StackLayout>
+
+</ContentPage>
