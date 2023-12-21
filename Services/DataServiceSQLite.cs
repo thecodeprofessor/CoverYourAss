@@ -1,4 +1,3 @@
-sing MediConnect.Model;
 using SQLite;
 using System.Collections.ObjectModel;
 using System.Reflection;
